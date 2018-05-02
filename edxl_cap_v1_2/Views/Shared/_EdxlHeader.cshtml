@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/edxl_capv1_2_refimp.css">
+    <title>@ViewBag.Title="EDXL-CAP-v1.2 Reference Implementation"</title>
+</head>
+<body>
+    <div id="main">
+            <div id="header">
+                <div id="widgetBar">
+                    @*<div class="headerWidgetLwft" style="float: right">
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                    <div class="headerWidget" style="float: right">
+                        [ review message ]
+                    </div>
+                    <div class="headerWidget" style="float: right">
+                        [ assemble message pkg ]
+                    </div>
+                    <div class="headerWidget" style="float: right">
+                        [ approve message pkg ]
+                    </div>*@
+                    <div class="headerWidget" style="float: right">
+                        [ approve message pkg ]
+                    </div>
+                    <div class="headerWidget" style="float: right">
+                        [ assemble message pkg ]
+                    </div>
+                    <div class="headerWidget" style="float: right">
+                        [ review message ]
+                    </div>
+                    <div class="headerWidgetLeft" style="float: right">
+                        @await  Html.PartialAsync("_LoginPartial")
+                    </div>
+                </div>
+
+                <a href="#">
+                    <img src="~/images/edxl-logo-01.jpg" id="logo" alt="EDXL logo">
+                    <img src="~/images/edxlw.jpg" align="center" id="logoText" alt="EMERGENCY DATA EXCHANGE LANGUAGE">
+                </a>
+
+            </div>
+            
+        </div>
+
+</body>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.Resource>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<h3>Resource</h3>>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<style>
+    tr:nth-child(even) {
+        background-color: lightBlue;
+    }
+    tr:nth-child(odd) {
+        background-color: white;
+    }
+</style>
+
+<table id="elementTable" class="smallText">
+
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResourceDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MimeType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Uri)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DerefUri)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Digest)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Info_Alert_Identifier)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataCategory_Id)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourceDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MimeType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DerefUri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Digest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info_Alert_Identifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCategory_Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ResourceIndex">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

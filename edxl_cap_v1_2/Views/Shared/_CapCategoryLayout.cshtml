@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/capv1_2_refimp.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="content-wrapper">
+            @Html.Partial("_EdxlHeader")
+            <span class="smallText">
+                Select&nbsp;Alert Identifier (Be sure you are working on the intended CAP Alert Message.)
+                <select name="status">
+                    <option value="Select" selected>Select</option>
+                    <option value="NOAA-NWS-ALERTS-CA125838fsecfc.WinterStormWarning.-125838f803c0CA.EKAWSWEKA.d2e18d2b81b08f7bcd9e6fadde0ff6db">NOAA-NWS-ALERTS-CA125838fsecfc.WinterStormWarning.-125838f803c0CA.EKAWSWEKA.d2e18d2b81b08f7bcd9e6fadde0ff6db</option>
+                    <option value="Option3">Option3</option>
+                    <option value="Option4">Option4</option>
+                    <option value="Option5">Option5</option>
+                </select>
+            </span>
+        </div>
+    </header>
+    <!-- End of Header -->
+    <!-- edxlLeftColumn -->
+    <div id="edxlLeftColumn">
+        @Html.Partial("_CapLeftColumnPartial")
+    </div>
+    <!-- End of edxlLeftColumn -->
+    <!-- indexRightColumn-Content Body -->
+    <div id="indexRightColumn" style="position:relative">
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+    </div>
+    <!-- End of edxlRightColumn-Content Body -->
+
+   
+
+    <!-- Footer -->
+    <footer>
+        <div class="content-wrapper" >
+            @Html.Partial("_EdxlFooter")
+        </div>
+    </footer>
+
+</body>
+</html>

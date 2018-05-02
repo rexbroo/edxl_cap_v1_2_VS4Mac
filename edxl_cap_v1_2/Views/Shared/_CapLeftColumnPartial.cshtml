@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, 
+    visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/capv1_2_refimp.css">
+    <title>@ViewBag.Title="EDXL-CAP-v1.2 Reference Implementation"</title>
+</head>
+
+<body>
+    <!-- edxlLeftColumn -->
+
+    <div id="edxlLeftColumn">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <h3>EDXL-CAP Data Categories</h3>
+        <p></p>
+        <p></p>
+
+        <div class="edxlLeftColumn">
+            <ul class="edxlLeftColumn ul" style="list-style-type: none">
+                <li class="edxlLeftColumn ul li"><a asp-action="Index" asp-controller="alerts">Alert</a></li>
+                <li class="edxlLeftColumn ul li"><a asp-action="Index" asp-controller="infos">Info</a></li>
+                <li class="edxlLeftColumn ul li"><a asp-action="Index" asp-controller="areas">Area</a></li>
+                <li class="edxlLeftColumn ul li"><a asp-action="Index" asp-controller="resources">Resource</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<!-- End of edxlLeftColumn -->

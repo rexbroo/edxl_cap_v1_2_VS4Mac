@@ -1,0 +1,521 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.Resource>
+@using edxl_cap_v1_2.Models
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <h3>Resource</h3>
+
+    <style>
+        tr:nth-child(even) {
+            background-color: lightBlue;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+    </style>
+
+    <table id="elementTable" class="smallText">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.ResourceDesc)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.ResourceDesc) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.ResourceDesc)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.ResourceDesc) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.ResourceDesc)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.MimeType)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.MimeType) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.MimeType)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.MimeType) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.MimeType)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Size)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Size) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Size)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Size) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.Size)" cols="25">
+                                </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Uri)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Uri) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Uri)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Uri) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.Uri)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.DerefUri)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.DerefUri) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.DerefUri)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.DerefUri) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.DerefUri)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Digest)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Digest) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Digest)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Digest) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.Digest)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Info_Alert_Identifier)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Info_Alert_Identifier) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Info_Alert_Identifier)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.Info_Alert_Identifier) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.Info_Alert_Identifier)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.DataCategory_Id)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        @if (Element.DatatypeSize < 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.DataCategory_Id) value
+                                <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.DataCategory_Id)" size="25" />
+                            </span>
+                        }
+                        else if (Element.DatatypeSize > 49)
+                        {
+                            <span class="smallText">
+                                Enter @Html.DisplayNameFor(model => model.DataCategory_Id) value
+                                <textarea name="elementValue" rows="3" value="@Html.DisplayFor(modelItem => item.DataCategory_Id)" cols="25">
+                                    </textarea>
+                            </span>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="Details" method="post" asp-route-id="@item.ResourceIndex">
+                        <input type="hidden"
+                               name="elementId"
+                               value="${element.id}">
+                        <input type="submit"
+                               value="add element">
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResourceIndex">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ResourceIndex">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+</body>
+
+    <p style="font-size:x-small;padding:2px;text-align:center;color:#ffffff">* = required &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; repeat button is for multiple-use elements. </p>
+
+</html>

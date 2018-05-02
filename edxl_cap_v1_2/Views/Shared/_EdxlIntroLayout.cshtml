@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/edxl_capv1_2_refimp.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <div class="content-wrapper">
+            @Html.Partial("_EdxlHeader")
+        </div>
+    </header>
+    <!-- End of Header -->
+ 
+    <!-- indexLeftColumn -->
+    <div id="indexLeftColumn">
+        @RenderSection("EdxlIntro")
+    </div>
+    <!-- End of indexLeftColumn -->
+    
+    <!-- indexRightColumn-Content Body -->
+    <div id="indexRightColumn">
+            @RenderBody()
+    </div>
+    <!-- End of indexRightColumn-Content Body -->
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="content-wrapper">
+            @Html.Partial("_EdxlFooter")
+        </div>
+    </footer>
+ 
+</body>
+</html>

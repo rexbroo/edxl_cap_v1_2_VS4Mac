@@ -1,0 +1,161 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.Info>
+@using edxl_cap_v1_2.Models
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <h3>Info</h3>
+
+    <style>
+        tr:nth-child(even) {
+            background-color: lightBlue;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+    </style>
+
+    <table id="elementTable" class="smallText">
+
+       
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponseType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Urgency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certainty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Severity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Audience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Effective)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onset)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expires)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SenderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instruction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parameter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCategory_Id)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponseType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Urgency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certainty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Severity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Audience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Effective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Onset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expires)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instruction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Web)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parameter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCategory_Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InfoIndex">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InfoIndex">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InfoIndex">Delete</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>

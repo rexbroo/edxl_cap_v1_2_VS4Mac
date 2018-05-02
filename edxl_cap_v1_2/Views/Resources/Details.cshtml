@@ -1,0 +1,88 @@
+﻿@model edxl_cap_v1_2.Models.Resource
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div align="left">
+    <h3>Details</h3>
+</div>
+
+    <div>
+        <div align="left">
+            <h4>Resource</h4>
+        </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceDesc)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.ResourceDesc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MimeType)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.MimeType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uri)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Uri)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DerefUri)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.DerefUri)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Digest)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Digest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Info_Alert_Identifier)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Info_Alert_Identifier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCategory_Id)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.DataCategory_Id)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>ElementName</th>
+                    <th>DataCategory</th>
+                </tr>
+                @foreach (var item in Model.Elements)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ElementName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCategory)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ResourceIndex">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
