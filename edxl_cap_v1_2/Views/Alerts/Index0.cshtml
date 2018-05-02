@@ -1,0 +1,135 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.Alert>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<h3>Alert</h3>
+
+<style>
+    tr:nth-child(even) {
+        background-color: lightBlue;
+    }
+
+    tr:nth-child(odd) {
+        background-color: white;
+    }
+</style>
+
+<table id="elementTable" class="smallText">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Identifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MsgType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scope)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restriction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.References)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCategory_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MsgType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Source)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scope)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Restriction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Addresses)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.References)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Incidents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCategory_Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

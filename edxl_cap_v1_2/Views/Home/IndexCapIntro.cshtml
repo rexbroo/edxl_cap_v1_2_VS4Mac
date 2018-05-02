@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "IndexCapIntro";
+    Layout = "~/Views/Shared/_CapIntroLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <!-- End of Header -->
+    <!-- indexLeftColumn -->
+
+    @section CapIntro
+        {
+        <p style="font-size:larger;padding:10px;text-align:justify">
+            Welcome to the opening page for generating
+            your agency's Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) Message.
+        </p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            First choose the EDXL-CAP Data Category you want
+            compose first from among those shown in the panel to the right. If you are strting a new CAP Alert
+            Message you must start with "alert." If you are continuing a message that you have already begun any
+            of the choices provide a droip-down list of currently unfinished messages from which
+            you can select the message you wish to cintinue. Your click
+            takes you to the page where you start composing your message.
+        </p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            Subsequent pages allow you to review the elements you
+            add to the category, assemble the overall CAP message, review and approve it. Then you package the CAP Message
+            with its EDXL-DE header-wrapper.
+        </p>
+    }
+
+    <!-- End of indexLeftColumn -->
+    <!-- Content Body -->
+    <div class="edxlBox">
+        <a href="#">
+            <a asp-action="Index" asp-controller="alerts">
+                <span class="edxlLabelText">alert</span><br>
+                <img src="~/images/categories/alert.jpg"
+                     alt="EDXL-CAP-v1.2 Alert Data Category">
+            </a>
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <a asp-action="Index" asp-controller="infos">
+                <span class="edxlLabelText">info</span><br>
+                <img src="~/images/categories/info.jpg"
+                     alt="EDXL-CAP-v1.2 Info Data Category">
+            </a>
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <a asp-action="Index" asp-controller="areas">
+                <span class="edxlLabelText">area</span><br>
+                <img src="~/images/categories/area.jpg"
+                     alt="EDXL-CAP-v1.2 Area Data Category">
+            </a>
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <a asp-action="Index" asp-controller="resources">
+                <span class="edxlLabelText">resource</span><br>
+                <img src="~/images/categories/resource.jpg"
+                     alt="EDXL-CAP-v1.2 Resource Data Category">
+            </a>
+        </a>
+    </div>
+    <!-- End of Content Body -->
+    <!-- Footer -->
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects,
+    visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*
+    Creating MVC View for Index method of HomeController by hand
+    without automatic scaffolding done in VS ion Windows10,
+*@
+
+@{
+    ViewData["Title"] = "IndexCap";
+    Layout = "~/Views/Shared/_CapIntroLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <!-- End of Header -->
+    <!-- indexLeftColumn -->
+
+    @section CapIntro
+        {
+        <p style="font-size:larger;padding:10px;text-align:justify">
+            Welcome to the start page for composing
+            your Emergency Data Exchange Language - Common Alerting Protocol (EDXL-CAP) Message.
+        </p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            First choose the EDXL-CAP Data Category you want
+            compose first from among those shown in the panel to the right. We suggest starting with "alert." Your click
+            takes you to the page where you start composing your message.
+        </p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            Subsequent pages allow you to review the elements you
+            add to the category, assemble the overall CAP message, review and approve it. Then you package the CAP Message
+            with its EDXL-DE header-wrapper.
+        </p>
+    }
+
+    <!-- End of indexLeftColumn -->
+    <!-- Content Body -->
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">alert</span><br>
+            <img src="~/images/categories/alert.jpg"
+                 alt="EDXL-CAP-v1.2 Alert Data Category">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">info</span><br>
+            <img src="~/images/categories/info.jpg"
+                 alt="EDXL-CAP-v1.2 Info Data Category">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">area</span><br>
+            <img src="~/images/categories/area.jpg"
+                 alt="EDXL-CAP-v1.2 Area Data Category">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">resource</span><br>
+            <img src="~/images/categories/resource.jpg"
+                 alt="EDXL-CAP-v1.2 Resource Data Category">
+        </a>
+    </div>
+    <!-- End of Content Body -->
+    <!-- Footer -->
+</body>
+</html>
+
+

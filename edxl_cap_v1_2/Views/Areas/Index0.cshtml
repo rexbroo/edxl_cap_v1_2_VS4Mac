@@ -1,0 +1,85 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.Area>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<h3>Area</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<style>
+    tr:nth-child(even) {
+        background-color: lightBlue;
+    }
+
+    tr:nth-child(odd) {
+        background-color: white;
+    }
+</style>
+
+<table id="elementTable" class="smallText">
+    
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Polygon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Circle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geocode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Altitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ceiling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCategory_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Polygon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Circle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Geocode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Altitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ceiling)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCategory_Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AreaIndex">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AreaIndex">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AreaIndex">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

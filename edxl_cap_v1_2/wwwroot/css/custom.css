@@ -1,0 +1,45 @@
+﻿/* 
+    Created on : Apr 08, 2018, 12:13:58 PM
+    Author     : rexbrooks
+*/
+
+.navbar {
+    min-height: 40px;
+}
+
+.navbar-brand {
+    padding: 0 5px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.navbar-toggle {
+    /* (40px - button height 404px) / 2 = 20px */
+    margin-top: 8px;
+    padding: 5px 5px;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        /* (40px - line-height of 12px) / 2 = 20px */
+        padding-top: 5px;
+        padding-bottom: 5px;
+        line-height: 16px;
+    }
+}
+.navbar-xs {
+    min-height: 24px;
+    height: 24px;
+}
+
+    .navbar-xs .navbar-brand {
+        padding: 0px 5px;
+        font-size: 12px;
+        line-height: 24px;
+    }
+
+    .navbar-xs .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        line-height: 28px;
+    }

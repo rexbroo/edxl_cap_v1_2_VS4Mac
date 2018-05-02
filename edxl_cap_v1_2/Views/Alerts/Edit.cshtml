@@ -1,0 +1,764 @@
+﻿@model edxl_cap_v1_2.Models.Alert
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h3>Edit Alert</h3>
+    <hr />
+    <style>
+        tr:nth-child(even) {
+            background-color: lightBlue;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+    </style>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <table id="elementTable" class="smallText">
+
+            @*@foreach (var item in Model)
+                {*@
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Identifier)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Identifier" class="control-label"></label>
+                                <input asp-for="Identifier" class="form-control" />
+                                <span asp-validation-for="Identifier" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="repeat" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	A number or string uniquely identifying this message, assigned by the sender.
+                        (2)	MUST NOT include spaces, commas or restricted characters (less-than and ampersand).
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Sender)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Sender" class="control-label"></label>
+                                <input asp-for="Sender" class="form-control" />
+                                <span asp-validation-for="Sender" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="repeat" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name.
+                        (2)	MUST NOT include spaces, commas or restricted characters (less-than and ampersand).
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Sent)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Sent" class="control-label"></label>
+                                <input asp-for="Sent" class="form-control" />
+                                <span asp-validation-for="Sent" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1) The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes) format (e.g., "2002-05-24T16:49:00-07:00" for 24 May 2002 at 16:49 PDT).
+                        (2) Alphabetic timezone designators such as “Z” MUST NOT be used.  The timezone for UTC MUST be represented as “-00:00”.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Status)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Status" class="control-label"></label>
+                                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        Code Values: “Actual” -  “Exercise” -  “System” -  “Test” -  “Draft”
+                        See http://docs.oasis-open.org/emergency/cap/v1.2/os/CAP-v1.2-os.pdf for details.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.MsgType)<text>*</text>
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="MsgType" class="control-label"></label>
+                                <select asp-for="MsgType" asp-items="Html.GetEnumSelectList<MsgType>()" class="form-control"></select>
+                                <span asp-validation-for="MsgType" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        Code Values: “Alert” -  “Update” -  “Cancel” -   “Ack” -  “Error”
+                        See http://docs.oasis-open.org/emergency/cap/v1.2/os/CAP-v1.2-os.pdf for details.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp; @Html.DisplayNameFor(model => model.Source)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Source" class="control-label"></label>
+                                <input asp-for="Source" class="form-control" />
+                                <span asp-validation-for="Source" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        The particular source of this alert;
+                        e.g., an operator or a specific device.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Scope)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Scope" class="control-label"></label>
+                                <select asp-for="Scope" asp-items="Html.GetEnumSelectList<Scope>()" class="form-control"></select>
+                                <span asp-validation-for="Scope" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        Code Values: “Public” -  “Restricted” (see 'restriction', below) -
+                        “Private” (see 'addresses', below)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Restriction)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Restriction" class="control-label"></label>
+                                <input asp-for="Restriction" class="form-control" />
+                                <span asp-validation-for="Restriction" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        Used when 'scope' value is "Restricted".
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Addresses)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Addresses" class="control-label"></label>
+                                <input asp-for="Addresses" class="form-control" />
+                                <span asp-validation-for="Addresses" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	Required when 'scope' is “Private”,
+                        optional when 'scope' is “Public” or “Restricted”.
+                        (2)	Each recipient SHALL be identified by an identifier or an address.
+                        (3)	Multiple space-delimited addresses MAY be included. Addresses including
+                        whitespace MUST be enclosed in double-quotes.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Code)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Code" class="control-label"></label>
+                                <input asp-for="Code" class="form-control" />
+                                <span asp-validation-for="Code" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }    <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	Any user-defined flag or special code used to flag the alert message for special handling.
+                        (2)	Multiple instances MAY occur.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Note)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="Note" class="control-label"></label>
+                                <input asp-for="Note" class="form-control" />
+                                <span asp-validation-for="Note" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        The message note is primarily intended for use with
+                        'status' “Exercise” and 'msgType' “Error”.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.References)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="References" class="control-label"></label>
+                                <input asp-for="References" class="form-control" />
+                                <span asp-validation-for="References" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	The extended message identifier(s) (in the form sender,identifier,sent) of an earlier CAP message or messages referenced by this one.
+                        (2)	If multiple messages are referenced, they SHALL be separated by whitespace.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Incidents)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="reallySmallTextBlack">
+                                <label asp-for="Incidents" class="control-label"></label>
+                                <input asp-for="Incidents" class="form-control" />
+                                <span asp-validation-for="Incidents" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        (1)	Used to collate multiple messages referring to different aspects of the same incident.
+                        (2)	If multiple incident identifiers are referenced, they SHALL be separated by whitespace.  Incident
+                        names including whitespace SHALL be surrounded by double-quotes.
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="start">start
+                </td>
+                <td>
+                    &nbsp;&nbsp;element:<br>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.DataCategory_Id)
+                    @if (Element.Required == true)
+                    {
+                        <text>*</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <div id="elementInput">
+                        <div class="form-group">
+                            <span class="smallText">
+                                <label asp-for="DataCategory_Id" class="control-label"></label>
+                                <input asp-for="DataCategory_Id" class="form-control" />
+                                <span asp-validation-for="DataCategory_Id" class="text-danger"></span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Element.Repeatable == true)
+                    {
+                        <input type="radio" name="repeatElement" value="" /><text>&nbsp; repeat</text>
+                    }
+                    else
+                    {
+                        <text>&nbsp;&nbsp;</text>
+                    }
+                </td>
+                <td>
+                    <span class="reallySmallTextBlack">
+                        Id for the DataCategory of this section of the Common Alerting Protocol
+                        For Alert, the DataCategory_Id = 1.
+                    </span>
+                </td>
+            </tr>
+            @*}*@
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Submit Edit" class="btn btn-default" />
+                    </div>
+                    &nbsp;<div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </td>
+                <td>
+                    @section Scripts {
+                        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                    }
+                </td>
+                <td></td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+<p style="font-size:x-small;padding:2px;text-align:center;color:#ffffff"> * = required &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repeat button is for multiple-use elements. </p>
+</html>
+
+
+@*<div class="form-group">
+                    <label asp-for="Identifier" class="control-label"></label>
+                    <input asp-for="Identifier" class="form-control" />
+                    <span asp-validation-for="Identifier" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sender" class="control-label"></label>
+                    <input asp-for="Sender" class="form-control" />
+                    <span asp-validation-for="Sender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sent" class="control-label"></label>
+                    <input asp-for="Sent" class="form-control" />
+                    <span asp-validation-for="Sent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <select asp-for="Status" class="form-control"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MsgType" class="control-label"></label>
+                    <select asp-for="MsgType" class="form-control"></select>
+                    <span asp-validation-for="MsgType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Source" class="control-label"></label>
+                    <input asp-for="Source" class="form-control" />
+                    <span asp-validation-for="Source" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Scope" class="control-label"></label>
+                    <select asp-for="Scope" class="form-control"></select>
+                    <span asp-validation-for="Scope" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restriction" class="control-label"></label>
+                    <input asp-for="Restriction" class="form-control" />
+                    <span asp-validation-for="Restriction" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Addresses" class="control-label"></label>
+                    <input asp-for="Addresses" class="form-control" />
+                    <span asp-validation-for="Addresses" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Code" class="control-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note" class="control-label"></label>
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="References" class="control-label"></label>
+                    <input asp-for="References" class="form-control" />
+                    <span asp-validation-for="References" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Incidents" class="control-label"></label>
+                    <input asp-for="Incidents" class="form-control" />
+                    <span asp-validation-for="Incidents" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataCategory_Id" class="control-label"></label>
+                    <input asp-for="DataCategory_Id" class="form-control" />
+                    <span asp-validation-for="DataCategory_Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

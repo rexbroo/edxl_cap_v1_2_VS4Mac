@@ -1,0 +1,19 @@
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.EdxlCapMessageViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_CapIntroLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EdxlCapMessageViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Alert_Identifier">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

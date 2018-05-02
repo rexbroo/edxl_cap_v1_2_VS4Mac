@@ -1,0 +1,22 @@
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.EdxlCapMessageViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_CapIntroLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EdxlCapMessageViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Alert_Identifier" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

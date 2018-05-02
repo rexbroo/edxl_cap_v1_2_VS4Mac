@@ -1,0 +1,126 @@
+﻿@model edxl_cap_v1_2.Models.Alert
+@using edxl_cap_v1_2.Models
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div align="left">
+    <h3>Details</h3>
+</div>
+
+    <div>
+        <div align="left">
+            <h4>Alert</h4>
+        </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Identifier)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Identifier)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sender)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Sender)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sent)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Sent)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MsgType)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.MsgType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Source)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Source)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Scope)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Scope)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Restriction)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Restriction)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Addresses)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Addresses)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Note)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Note)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.References)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.References)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Incidents)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.Incidents)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataCategory_Id)
+                </dt>
+                <dd style="text-align: left">
+                    @Html.DisplayFor(model => model.DataCategory_Id)
+                </dd>
+                <dd>
+                    <table class="table">
+                        <tr>
+                            <th>Added Element Name</th>
+                            <th>Added Element Value</th>
+                        </tr>
+                        @foreach (var item in Model.Elements)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                        </tr>
+                        }
+                    </table>
+                </dd>
+            </dl>
+        </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>

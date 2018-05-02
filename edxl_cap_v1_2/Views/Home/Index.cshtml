@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_EdxlIntroLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <!-- Header -->
+
+    <!-- End of Header -->
+
+    <!-- indexLeftColumn -->
+
+    @section EdxlIntro
+        {
+        <p style="font-size:larger;padding:10px;text-align:justify">
+            Welcome to the beginning page for generating
+            your Emergency Data Exchange Language (EDXL) Message.
+        <p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            First choose the EDXL Message Type you
+            need from among the message types shown in the panel to the right.
+            Alternatively, you can start by composing <a href="#">EDXL-DE-v1.0</a> or
+            <a href="#">EDXL-DE-v2.0</a> for your message.
+        </p>
+
+        <p style="font-size:smaller;padding:10px;text-align:justify">
+            In subsequent pages you review, approve and send  your message to its intended
+            addressee(s)/recipient(s) through the Distribution Element (EDXL-DE) which wraps
+            the electronic EDXL message payload like the envelope of a postal letter.
+        </p>
+    }
+
+    <!-- End of indexLeftColumn -->
+    <!-- Content Body-indexRightColumn -->
+    <div class="edxlBox">
+        <a asp-action="IndexCapIntro" asp-controller="home">
+            <span class="edxlLabelText">EDXL-CAP-v1.2</span><br>
+            <span class="edxlLabelTextSmall">Common Alerting Protocol</span>
+        </a>
+        <p />
+        <img src="images/EDXLMsgTypeImagesB/EDXL-CAP-v1.2.png"
+             alt="EDXL-CAP-v1.2">
+
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">EDXL-RM-v1.0</span><br>
+            <span class="edxlLabelTextSmall">Resource Messaging</span>
+            <p />
+            <img src="images/EDXLMsgTypeImagesB/EDXL-RM-v1.0.png"
+                 alt="EDXL-RM-v1.0">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">EDXL-HAVE-v2.0</span><br>
+            <span class="edxlLabelTextSmall">Hospital AVailability Exchange</span>
+            <p />
+            <img src="images/EDXLMsgTypeImagesB/EDXL-HAVE-v2.0.png"
+                 alt="EDXL-HAVE-v2.0">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">EDXL-TEP-v1.1</span><br>
+            <span class="edxlLabelTextSmall">Tracking Emergency Patients</span>
+            <p />
+            <img src="images/EDXLMsgTypeImagesB/EDXL-TEP-v1.1.png"
+                 alt="EDXL-TEP-v1.1">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">EDXL-TEC-v1.0</span><br>
+            <span class="edxlLabelTextSmall">Tracking Emrgncy Clients Rgstry</span>
+            <p />
+            <img src="images/EDXLMsgTypeImagesB/EDXL-TEC-v1.0.png"
+                 alt="EDXL-TEC-v1.0">
+        </a>
+    </div>
+    <div class="edxlBox">
+        <a href="#">
+            <span class="edxlLabelText">EDXL-SitRep-v1.0</span><br>
+            <span class="edxlLabelTextSmall">Situation Reporting</span>
+            <p />
+            <img src="images/EDXLMsgTypeImagesB/EDXL-SitRep-v1.0.png"
+                 alt="EDXL-SitRep-v1.0">
+        </a>
+    </div>
+
+    <!-- End of Content Body-indexRightColumn -->
+    <!-- Footer -->
+
+</body>
+</html>
+
