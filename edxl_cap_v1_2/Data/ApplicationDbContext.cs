@@ -18,7 +18,9 @@ namespace edxl_cap_v1_2.Data
             this.Database.EnsureCreated();
         }
 
-        public DbSet<EdxlCapMessageViewModel> EdxlCapMessageViewModel { get; set;  }
+        public DbSet<EdxlCapMsg> EdxlCapMsg { get; set; }
+
+        public DbSet<EdxlCapMessageViewModel> EdxlCapMessageViewModel { get; set; }
 
         public virtual DbSet<Person> Persons { get; set; }
 
