@@ -10,7 +10,7 @@ namespace edxl_cap_v1_2.Models
     public class Element 
     {
         [Key]
-        public int Id { get; set; }
+        public int ElementIndex { get; set; }
         public string ElementName { get; set; }
         public static Boolean Required { get; set; }
         public static Boolean Conditional { get; set; }
@@ -23,7 +23,7 @@ namespace edxl_cap_v1_2.Models
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
