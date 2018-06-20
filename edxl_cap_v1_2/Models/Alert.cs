@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace edxl_cap_v1_2.Models
     public class Alert
     {
         [Key]
-        public int Id { get; set; }
-        public string Identifier { get; set; }
+        public int AlertIndex { get; set; }
+		public string Alert_Identifier { get; set; }
         public string Sender { get; set; }
         public DateTime Sent { get; set; }
         public Status Status { get; set; }
@@ -23,13 +24,13 @@ namespace edxl_cap_v1_2.Models
         public string Note { get; set; }
         public string References { get; set; }
         public string Incidents { get; set; }
-        public int DataCategory_Id { get; set; }
+		public int DataCategory_Id { get; set; }
 
         public ICollection<Element> Elements { get; set; }
 
-        public System.Collections.IEnumerator GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 
