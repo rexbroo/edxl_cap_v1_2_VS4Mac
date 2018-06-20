@@ -25,10 +25,16 @@ namespace edxl_cap_v1_2.Controllers
             return View(await _context.Alert.ToListAsync());
         }
 
-        // GET: Alerts/Details/5
-        public async Task<IActionResult> Details(int? id)
+		// GET: Alerts
+        public IActionResult AlertSelect()
         {
-            if (id == null)
+            return View();
+        }
+
+        // GET: Alerts/Details/5
+        public async Task<IActionResult> Details(int? Id)
+        {
+            if (Id == null)
             {
                 return NotFound();
             }
@@ -37,7 +43,7 @@ namespace edxl_cap_v1_2.Controllers
                 .Include(e => e.Elements)
                     .ThenInclude(d=> d.DataCategory)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.AlertIndex == Id);
 
             //if (id != null)
             //{
@@ -67,7 +73,7 @@ namespace edxl_cap_v1_2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
+            [Bind("AlertIndex,Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
         {
             try
             {
@@ -96,7 +102,7 @@ namespace edxl_cap_v1_2.Controllers
                 return NotFound();
             }
 
-            var alert = await _context.Alert.SingleOrDefaultAsync(m => m.Id == id);
+            var alert = await _context.Alert.SingleOrDefaultAsync(m => m.AlertIndex == id);
             if (alert == null)
             {
                 return NotFound();
@@ -112,11 +118,11 @@ namespace edxl_cap_v1_2.Controllers
             {
                 return NotFound();
             }
-            var alertToUpdate = await _context.Alert.SingleOrDefaultAsync(s => s.Id == id);
+			var alertToUpdate = await _context.Alert.SingleOrDefaultAsync(s => s.AlertIndex == id);
             if (await TryUpdateModelAsync<Alert>(
                 alertToUpdate,
                 "",
-                a => a.Id, a => a.Identifier, a => a.Sender, a => a.Sent, a => a.Status, a => a.MsgType, a => a.Source, a => a.Scope, a => a.Addresses, a => a.Code, a => a.Note, a => a.References, a => a.Incidents, a => a.DataCategory_Id))
+				a => a.AlertIndex, a => a.Alert_Identifier, a => a.Sender, a => a.Sent, a => a.Status, a => a.MsgType, a => a.Source, a => a.Scope, a => a.Addresses, a => a.Code, a => a.Note, a => a.References, a => a.Incidents, a => a.DataCategory_Id))
             {
                 try
                 {
@@ -180,7 +186,7 @@ namespace edxl_cap_v1_2.Controllers
 
             var alert = await _context.Alert
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.AlertIndex == id);
             if (alert == null)
             {
                 return NotFound();
@@ -203,7 +209,7 @@ namespace edxl_cap_v1_2.Controllers
         {
             var alert = await _context.Alert
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.AlertIndex == id);
             if (alert == null)
             {
                 return RedirectToAction(nameof(Index));
