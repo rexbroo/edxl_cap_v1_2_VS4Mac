@@ -9,8 +9,8 @@ namespace edxl_cap_v1_2.Models
     public class Alert
     {
         [Key]
-        public int Id { get; set; }
-        public string Identifier { get; set; }
+        public int AlertIndex { get; set; }
+        public string Alert_Identifier { get; set; }
         public string Sender { get; set; }
         public DateTime Sent { get; set; }
         public Status Status { get; set; }
