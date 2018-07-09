@@ -21,7 +21,7 @@ namespace edxl_cap_v1_2.Data
 
             var alerts = new Alert[]
             {
-            new Alert{Id=1,Identifier="NOAA-NWS-ALERTS-CA125838fsecfc.WinterStormWarning.125838f803c0CA.EKAWSWEKA.d2e18d2b81b08f7bcd9e6fadde0ff6db",
+            new Alert{AlertIndex=1,Alert_Identifier="NOAA-NWS-ALERTS-CA125838fsecfc.WinterStormWarning.125838f803c0CA.EKAWSWEKA.d2e18d2b81b08f7bcd9e6fadde0ff6db",
                 Sender = "w-nws.webmaster@noaa.gov",Sent=DateTime.Parse("2017-01-22 22:31:08.000"),
                 Status=Status.Actual,MsgType=MsgType.Alert,Source="nws",Scope=Scope.Public,Restriction="NULL",
                 Addresses="NULL",Code="NULL",Note="Alert for CAZ107; CAZ108 (California) Issued by the National Weather Service",
