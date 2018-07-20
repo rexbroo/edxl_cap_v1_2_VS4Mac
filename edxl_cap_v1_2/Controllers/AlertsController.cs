@@ -34,12 +34,12 @@ namespace edxl_cap_v1_2.Controllers
             }
 
             var alert = await _context.Alert
-                .Include(e => e.Elements)
-                    .ThenInclude(d=> d.DataCategory)
+                //.Include(e => e.Elements)
+                    //.ThenInclude(d=> d.DataCategory)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.AlertIndex == id);
             
-            //if (id != null)
+			//if (id != null)
             //{
             //    ViewData["ElementID"] = id.Value;
             //    Element element = viewModel.Element.Where(
