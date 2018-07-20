@@ -24,7 +24,7 @@
     </style>
     <form asp-action="Edit">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="AlertIndex" />
 
         <table id="elementTable" class="smallText">
 
@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     &nbsp;&nbsp;element:<br>
-                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Identifier)<text>*</text>
+                    &nbsp;&nbsp;@Html.DisplayNameFor(model => model.Alert_Identifier)<text>*</text>
                     @if (Element.Required == true)
                     {
                         <text>*</text>
@@ -51,9 +51,9 @@
 
                         <div class="form-group">
                             <span class="smallText">
-                                <label asp-for="Identifier" class="control-label"></label>
-                                <input asp-for="Identifier" class="form-control" />
-                                <span asp-validation-for="Identifier" class="text-danger"></span>
+                                <label asp-for="Alert_Identifier" class="control-label"></label>
+                                <input asp-for="Alert_Identifier" class="form-control" />
+                                <span asp-validation-for="Alert_Identifier" class="text-danger"></span>
                             </span>
                         </div>
                     </div>

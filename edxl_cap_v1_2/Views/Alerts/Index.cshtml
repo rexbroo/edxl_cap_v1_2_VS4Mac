@@ -75,13 +75,16 @@
                     }
                 </td>
                 <td>
-                    <form asp-area="" asp-controller="alerts" asp-action="Details" method="post" asp-route-id="@item.AlertIndex">
+                    <a asp-action="Details" asp-controller="alerts" method="post"
+                     asp-route-id="@item.AlertIndex"><input type="submit" value="add element"></a>
+
+                    @*<form asp-area="" asp-controller="alerts" asp-action="Details" method="post" asp-route-id="@item.AlertIndex">
                         <input type="hidden"
                                name="elementId"
                                value="${element.ElementIndex}">
                         <input type="submit"
                                value="add element">
-                    </form>
+                    </form>*@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.AlertIndex">Edit</a>
