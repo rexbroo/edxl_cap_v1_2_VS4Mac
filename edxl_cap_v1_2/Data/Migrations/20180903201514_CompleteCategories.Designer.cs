@@ -12,9 +12,10 @@ using System;
 namespace edxl_cap_v1_2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180903201514_CompleteCategories")]
+    partial class CompleteCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +129,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.Property<int?>("AreaIndex");
 
-                    b.Property<int?>("InfoIndex");
+                    b.Property<int?>("InfoAreaIndex");
 
                     b.Property<int?>("ResourceIndex");
 
@@ -138,7 +139,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.HasIndex("AreaIndex");
 
-                    b.HasIndex("InfoIndex");
+                    b.HasIndex("InfoAreaIndex");
 
                     b.HasIndex("ResourceIndex");
 
@@ -147,7 +148,7 @@ namespace edxl_cap_v1_2.Migrations
 
             modelBuilder.Entity("edxl_cap_v1_2.Models.ContentViewModels.Info", b =>
                 {
-                    b.Property<int>("InfoIndex")
+                    b.Property<int>("AreaIndex")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Alert_Identifier")
@@ -193,7 +194,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.Property<string>("Web");
 
-                    b.HasKey("InfoIndex");
+                    b.HasKey("AreaIndex");
 
                     b.ToTable("Info");
                 });
@@ -280,7 +281,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.Property<string>("ElementName");
 
-                    b.Property<int?>("InfoIndex");
+                    b.Property<int?>("InfoAreaIndex");
 
                     b.Property<int?>("ResourceIndex");
 
@@ -292,7 +293,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.HasIndex("DataCategory_Id1");
 
-                    b.HasIndex("InfoIndex");
+                    b.HasIndex("InfoAreaIndex");
 
                     b.HasIndex("ResourceIndex");
 
@@ -528,7 +529,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.HasOne("edxl_cap_v1_2.Models.ContentViewModels.Info", "Info")
                         .WithMany()
-                        .HasForeignKey("InfoIndex");
+                        .HasForeignKey("InfoAreaIndex");
 
                     b.HasOne("edxl_cap_v1_2.Models.ContentViewModels.Resource", "Resource")
                         .WithMany()
@@ -551,7 +552,7 @@ namespace edxl_cap_v1_2.Migrations
 
                     b.HasOne("edxl_cap_v1_2.Models.ContentViewModels.Info")
                         .WithMany("Elements")
-                        .HasForeignKey("InfoIndex");
+                        .HasForeignKey("InfoAreaIndex");
 
                     b.HasOne("edxl_cap_v1_2.Models.ContentViewModels.Resource")
                         .WithMany("Elements")
