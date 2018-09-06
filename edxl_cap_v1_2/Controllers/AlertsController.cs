@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using edxl_cap_v1_2.Data;
-using edxl_cap_v1_2.Models;
+using edxl_cap_v1_2.Models.ContentViewModels;
 
 namespace edxl_cap_v1_2.Controllers
 {
@@ -20,10 +20,50 @@ namespace edxl_cap_v1_2.Controllers
         }
 
         // GET: Alerts
+        public ActionResult AlertSelect()
+        {
+            var vm = new AlertViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AlertIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Alerts
+            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
+            {
+                AlertIndex = a.AlertIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
+        //// GET: Alerts
         public async Task<IActionResult> Index()
         {
             return View(await _context.Alert.ToListAsync());
         }
+
+        // GET: Alerts
+        //public ActionResult Index(int SelectedAlertIndex)
+        //{
+        //    return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
+        //}
+
+        [HttpPost]
+        public IActionResult Index(Alert obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Alert loaded successfully";
+            }
+            return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
+        }
+
+
 
         // GET: Alerts/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -35,11 +75,11 @@ namespace edxl_cap_v1_2.Controllers
 
             var alert = await _context.Alert
                 //.Include(e => e.Elements)
-                    //.ThenInclude(d=> d.DataCategory)
+                //    .ThenInclude(d=> d.DataCategory)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.AlertIndex == id);
-            
-			//if (id != null)
+
+            //if (id != null)
             //{
             //    ViewData["ElementID"] = id.Value;
             //    Element element = viewModel.Element.Where(
@@ -67,7 +107,7 @@ namespace edxl_cap_v1_2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
+            [Bind("Alert_Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
         {
             try
             {
@@ -133,42 +173,6 @@ namespace edxl_cap_v1_2.Controllers
             }
             return View(alertToUpdate);
         }
-
-        // POST: Alerts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, 
-        //    [Bind("Id,Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
-        //{
-        //    if (id != alert.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(alert);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!AlertExists(alert.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(alert);
-        //}
 
         // GET: Alerts/Delete/5
         public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)

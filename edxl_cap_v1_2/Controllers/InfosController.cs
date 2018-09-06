@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using edxl_cap_v1_2.Data;
-using edxl_cap_v1_2.Models;
+using edxl_cap_v1_2.Models.ContentViewModels;
 
 namespace edxl_cap_v1_2.Controllers
 {
@@ -19,10 +19,42 @@ namespace edxl_cap_v1_2.Controllers
             _context = context;
         }
 
+        // GET: Alerts
+        public ActionResult InfoSelect()
+        {
+            var vm = new InfoViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.InfoIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Infos
+            vm.Infos = _context.EdxlCapMsg.Select(a => new InfoVm
+            {
+                InfoIndex = a.InfoIndex,
+                //Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
         // GET: Infos
         public async Task<IActionResult> Index()
         {
             return View(await _context.Info.ToListAsync());
+        }
+
+        [HttpPost]
+        public IActionResult Index(Info obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Info loaded successfully";
+            }
+            return View(_context.Info.Where(x => x.InfoIndex == SelectedAlertIndex));
         }
 
         // GET: Infos/Details/5
@@ -34,8 +66,8 @@ namespace edxl_cap_v1_2.Controllers
             }
 
             var info = await _context.Info
-                .Include(e => e.Elements)
-                    .ThenInclude(d => d.DataCategory)
+                //.Include(e => e.Elements)
+                //    .ThenInclude(d => d.DataCategory)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.InfoIndex == id);
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using edxl_cap_v1_2.Data;
 using edxl_cap_v1_2.Models;
+using edxl_cap_v1_2.Models.ContentViewModels;
 
 namespace edxl_cap_v1_2.Controllers
 {
@@ -19,10 +20,42 @@ namespace edxl_cap_v1_2.Controllers
             _context = context;
         }
 
-        // GET: Resources
+        // GET: Areas
+        public ActionResult ResourceSelect()
+        {
+            var vm = new ResourceViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AlertIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Resources
+            vm.Resources = _context.EdxlCapMsg.Select(a => new ResourceVm
+            {
+                ResourceIndex = a.ResourceIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
+        // GET: resources
         public async Task<IActionResult> Index()
         {
             return View(await _context.Resource.ToListAsync());
+        }
+
+        [HttpPost]
+        public IActionResult Index(Resource obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Resource loaded successfully";
+            }
+            return View(_context.Resource.Where(x => x.ResourceIndex == SelectedAlertIndex));
         }
 
         // GET: Resources/Details/5
@@ -34,8 +67,8 @@ namespace edxl_cap_v1_2.Controllers
             }
 
             var resource = await _context.Resource
-                .Include(e => e.Elements)
-                    .ThenInclude(d => d.DataCategory)
+                //.Include(e => e.Elements)
+                //    .ThenInclude(d => d.DataCategory)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ResourceIndex == id);
 
