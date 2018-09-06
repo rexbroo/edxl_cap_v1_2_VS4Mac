@@ -1,4 +1,4 @@
-﻿@model edxl_cap_v1_2.Models.Area
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.Area
 
 @{
     ViewData["Title"] = "Edit";
@@ -377,53 +377,3 @@
 </body>
 <p style="font-size:x-small;padding:2px;text-align:center;color:#ffffff"> * = required &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repeat button is for multiple-use elements. </p>
 </html>
-
-@*@<div class="form-group">
-            <label asp-for="AreaDesc" class="control-label"></label>
-            <input asp-for="AreaDesc" class="form-control" />
-            <span asp-validation-for="AreaDesc" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Polygon" class="control-label"></label>
-            <input asp-for="Polygon" class="form-control" />
-            <span asp-validation-for="Polygon" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Circle" class="control-label"></label>
-            <input asp-for="Circle" class="form-control" />
-            <span asp-validation-for="Circle" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Geocode" class="control-label"></label>
-            <input asp-for="Geocode" class="form-control" />
-            <span asp-validation-for="Geocode" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Altitude" class="control-label"></label>
-            <input asp-for="Altitude" class="form-control" />
-            <span asp-validation-for="Altitude" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Ceiling" class="control-label"></label>
-            <input asp-for="Ceiling" class="form-control" />
-            <span asp-validation-for="Ceiling" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="DataCategory_Id" class="control-label"></label>
-            <input asp-for="DataCategory_Id" class="form-control" />
-            <span asp-validation-for="DataCategory_Id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </form>
-    </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }*@

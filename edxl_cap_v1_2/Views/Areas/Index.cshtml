@@ -1,4 +1,4 @@
-﻿@model IEnumerable<edxl_cap_v1_2.Models.Area>
+﻿@model IEnumerable<edxl_cap_v1_2.Models.ContentViewModels.Area>
 @using edxl_cap_v1_2.Models
 
 @{
@@ -13,7 +13,10 @@
 </head>
 <body>
 
-    <h3>Area</h3>
+    <h4>Area</h4>
+    <div>
+        @ViewBag.Message
+    </div>
 
     <style>
         tr:nth-child(even) {
