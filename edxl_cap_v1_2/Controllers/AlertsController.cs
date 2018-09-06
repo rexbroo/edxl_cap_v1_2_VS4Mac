@@ -25,10 +25,16 @@ namespace edxl_cap_v1_2.Controllers
             return View(await _context.Alert.ToListAsync());
         }
 
-        // GET: Alerts/Details/5
-        public async Task<IActionResult> Details(int? id)
+		// GET: Alerts
+        public IActionResult AlertSelect()
         {
-            if (id == null)
+            return View();
+        }
+
+        // GET: Alerts/Details/5
+        public async Task<IActionResult> Details(int? Id)
+        {
+            if (Id == null)
             {
                 return NotFound();
             }
@@ -67,7 +73,7 @@ namespace edxl_cap_v1_2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
+            [Bind("AlertIndex,Identifier,Sender,Sent,Status,MsgType,Source,Scope,Restriction,Addresses,Code,Note,References,Incidents,Language,DataCategory_Id")] Alert alert)
         {
             try
             {
@@ -112,6 +118,7 @@ namespace edxl_cap_v1_2.Controllers
             {
                 return NotFound();
             }
+
             var alertToUpdate = await _context.Alert.SingleOrDefaultAsync(s => s.AlertIndex == id);
             if (await TryUpdateModelAsync<Alert>(
                 alertToUpdate,
