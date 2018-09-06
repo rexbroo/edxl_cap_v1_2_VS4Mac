@@ -1,0 +1,28 @@
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.AlertViewModel
+
+@{
+    ViewData["Title"] = "AlertSelect";
+    Layout = "~/Views/Shared/_CapCategoryLayout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+
+    @{
+        <h4>@Model.Alerts.Count Alerts</h4>
+
+        <form asp-controller="Alerts" asp-action="Index" method="post" style="max-width">
+            <select class="cap_select" id="cap_select" style="width:100%;max-width:95%"
+            asp-for="SelectedAlertIndex" asp-items="@Model.Alert_Identifiers">
+                <option>Select one</option>
+            </select>
+            <br />
+            <input type="submit" name="Index" value="LoadAlert" />
+        </form>
+    }
+
+
+<body>
+</body>

@@ -1,10 +1,10 @@
-﻿@model edxl_cap_v1_2.Models.Alert
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.Alert
+@using edxl_cap_v1_2.Models
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<body>
 <div align="left">
     <h3>Details</h3>
 </div>
@@ -112,8 +112,7 @@
                                 @Html.DisplayNameFor(modelItem => item.ElementIndex)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ElementIndex
-                                )
+                                @Html.DisplayFor(modelItem => item.ElementIndex)
                             </td>
                         </tr>
                         }
@@ -125,4 +124,3 @@
         <a asp-action="Edit" asp-route-id="@Model.AlertIndex">Edit</a> |
         <a asp-action="Index">Back to List</a>
     </div>
-</body>
