@@ -14,10 +14,10 @@
 <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Identifier)
+                @Html.DisplayNameFor(model => model.Alert_Identifier)
             </dt>
             <dd style="text-align: left">
-                @Html.DisplayFor(model => model.Identifier)
+                @Html.DisplayFor(model => model.Alert_Identifier)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Sender)
@@ -100,7 +100,7 @@
         </dl>
 
         <form asp-action="Delete">
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="AlertIndex" />
             <input type="submit" value="Delete" class="btn btn-default" /> |
             <a asp-action="Index">Back to List</a>
         </form>

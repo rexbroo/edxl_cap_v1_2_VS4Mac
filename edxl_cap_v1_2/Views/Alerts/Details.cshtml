@@ -1,10 +1,10 @@
 ﻿@model edxl_cap_v1_2.Models.Alert
-@using edxl_cap_v1_2.Models
 
 @{
     ViewData["Title"] = "Details";
 }
 
+<body>
 <div align="left">
     <h3>Details</h3>
 </div>
@@ -16,10 +16,10 @@
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model.Identifier)
+                    @Html.DisplayNameFor(model => model.Alert_Identifier)
                 </dt>
                 <dd style="text-align: left">
-                    @Html.DisplayFor(model => model.Identifier)
+                    @Html.DisplayFor(model => model.Alert_Identifier)
                 </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.Sender)
@@ -100,7 +100,7 @@
                     @Html.DisplayFor(model => model.DataCategory_Id)
                 </dd>
                 <dd>
-                    <table class="table">
+                    @*<table class="table">
                         <tr>
                             <th>Added Element Name</th>
                             <th>Added Element Value</th>
@@ -109,18 +109,20 @@
                         {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(modelItem => item.Id)
+                                @Html.DisplayNameFor(modelItem => item.ElementIndex)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Id)
+                                @Html.DisplayFor(modelItem => item.ElementIndex
+                                )
                             </td>
                         </tr>
                         }
-                    </table>
+                    </table>*@
                 </dd>
             </dl>
         </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Edit" asp-route-id="@Model.AlertIndex">Edit</a> |
         <a asp-action="Index">Back to List</a>
     </div>
+</body>

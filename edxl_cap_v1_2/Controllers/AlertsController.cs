@@ -40,12 +40,12 @@ namespace edxl_cap_v1_2.Controllers
             }
 
             var alert = await _context.Alert
-                .Include(e => e.Elements)
-                    .ThenInclude(d=> d.DataCategory)
+                //.Include(e => e.Elements)
+                    //.ThenInclude(d=> d.DataCategory)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.AlertIndex == Id);
-
-            //if (id != null)
+                .SingleOrDefaultAsync(m => m.AlertIndex == id);
+            
+			//if (id != null)
             //{
             //    ViewData["ElementID"] = id.Value;
             //    Element element = viewModel.Element.Where(
@@ -118,11 +118,12 @@ namespace edxl_cap_v1_2.Controllers
             {
                 return NotFound();
             }
-			var alertToUpdate = await _context.Alert.SingleOrDefaultAsync(s => s.AlertIndex == id);
+
+            var alertToUpdate = await _context.Alert.SingleOrDefaultAsync(s => s.AlertIndex == id);
             if (await TryUpdateModelAsync<Alert>(
                 alertToUpdate,
                 "",
-				a => a.AlertIndex, a => a.Alert_Identifier, a => a.Sender, a => a.Sent, a => a.Status, a => a.MsgType, a => a.Source, a => a.Scope, a => a.Addresses, a => a.Code, a => a.Note, a => a.References, a => a.Incidents, a => a.DataCategory_Id))
+                a => a.AlertIndex, a => a.Alert_Identifier, a => a.Sender, a => a.Sent, a => a.Status, a => a.MsgType, a => a.Source, a => a.Scope, a => a.Addresses, a => a.Code, a => a.Note, a => a.References, a => a.Incidents, a => a.DataCategory_Id))
             {
                 try
                 {
