@@ -8,6 +8,7 @@ using edxl_cap_v1_2.Models;
 using edxl_cap_v1_2.Models.ContentViewModels;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace edxl_cap_v1_2.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -18,9 +19,13 @@ namespace edxl_cap_v1_2.Data
             this.Database.EnsureCreated();
         }
 
-        public DbSet<EdxlCapMessageViewModel> EdxlCapMessageViewModel { get; set;  }
+        public DbSet<EdxlCapMsg> EdxlCapMsg { get; set; }
 
-        public virtual DbSet<Person> Persons { get; set; }
+		public DbSet<EdxlCapMessageViewModel> EdxlCapMessageViewModel { get; set;  }
+
+		public DbSet<AlertViewModel> AlertViewModel { get; set;  }
+
+		public virtual DbSet<Person> Persons { get; set; }
 
         public DbSet<Alert> Alert { get; set; }
 
@@ -28,7 +33,7 @@ namespace edxl_cap_v1_2.Data
 
         public DbSet<DataCategory> DataCategory { get; set; }
 
-        public DbSet<Element> Element { get; set; }
+		public DbSet<Element> Element { get; set; }
 
         public DbSet<Info> Info { get; set; }
 
@@ -59,5 +64,6 @@ namespace edxl_cap_v1_2.Data
             modelBuilder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(200));
             modelBuilder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.Name).HasMaxLength(200));
         }
+
     }
 }
