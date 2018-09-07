@@ -77,11 +77,29 @@ label { line-height: 30px }
     margin: 0 auto;
 }
 
+div.select_container {
+    width: 650px;
+}
+
+select.cap_select {
+    width: auto;
+}
+
+/*IE FIX */
+select#cap_select {
+    width: 100%;
+}
+
+select:focus#cap_select {
+    width: auto;
+}
+
 
 /* styles for elements contained in the header, i.e.,
    shopping cart widget, language toggle, and logo */
 #header {
     height: 170px;
+    padding-left: 20px;
     background: #07889B;
     
 }
@@ -90,14 +108,13 @@ label { line-height: 30px }
     height: 75px;
     width: 230px;
     float: left;
-    margin-left: 30px;
-    margin-top: 20px;
+    margin-left: 50px;
+    margin-top: 15px;
 }
 
 #logoText {
-    float: center;
-    margin: 20px 40px 0 10px;
-    align-vertical: center;
+    float: left;
+    margin: 15px 10px 0 10px;
     /* font styles apply to text within img alt attribute */
     font-family: 'Impact', Arial Black, Helvetica Bold Condensed;
     font-size: 30px;
@@ -106,6 +123,7 @@ label { line-height: 30px }
 
 #widgetBar {
     height: 50px;
+    padding-top: 15px;
     width: 850px;
     float: right;
     background: #f5eabe;
@@ -135,7 +153,8 @@ label { line-height: 30px }
 .headerWidget {
     width: 185px;
     height: 30px;
-    margin: 2px 2px;
+    margin: 12px 2px;
+    vertical-align: middle;
     font-size: 12px;
     color: #f9f9f9;
     float: left;
@@ -146,6 +165,7 @@ label { line-height: 30px }
 .headerWidgetLeft {
     width: 235px;
     margin: 5px 2px;
+    vertical-align: middle;
     font-size: 12px;
     color: #f9f9f9;
     float: left;
