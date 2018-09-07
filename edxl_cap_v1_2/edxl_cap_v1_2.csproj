@@ -4,8 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
     <UserSecretsId>aspnet-edxl_cap_v1_2-A2A54C28-3A39-4B96-8C1D-032B19CE2A9C</UserSecretsId>
-  </PropertyGroup>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
 
+
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
@@ -25,10 +27,27 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-    <Folder Include="Models\ContentViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\EdxlCapMessage.cs" />
+    <Content Remove="wwwroot\css\capv1_2_refimp.css" />
+    <Content Remove="Views\Alerts\Create0.cshtml" />
+    <Content Remove="Views\Alerts\Create1.cshtml" />
+    <Content Remove="Views\Alerts\Index0.cshtml" />
+    <Content Remove="Views\Areas\Index0.cshtml" />
+    <Content Remove="Views\Areas\Index1.cshtml" />
+    <Content Remove="Views\Home\Index0.cshtml" />
+    <Content Remove="Views\Home\IndexCap.cshtml" />
+    <Content Remove="Views\Infos\Index0.cshtml" />
+    <Content Remove="Views\Infos\Index1.cshtml" />
+    <Content Remove="Views\Resources\Index0.cshtml" />
+    <Content Remove="Views\Resources\Index1.cshtml" />
+    <Content Remove="Views\Shared\_CapLeftColumnPartial0.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\ContentViewModels\AlertElementViewModel.cs" />
+    <Compile Remove="Models\ContentViewModels\AreaElementViewModel.cs" />
+    <Compile Remove="Models\ContentViewModels\InfoElementViewModel.cs" />
+    <Compile Remove="Models\ContentViewModels\ResourceElementViewModel.cs" />
   </ItemGroup>
 </Project>
