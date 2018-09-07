@@ -1,4 +1,4 @@
-﻿@model edxl_cap_v1_2.Models.Resource
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.Resource
 
 @{
     ViewData["Title"] = "Details";
@@ -62,7 +62,7 @@
             @Html.DisplayFor(model => model.DataCategory_Id)
         </dd>
         <dd>
-            <table class="table">
+            @*<table class="table">
                 <tr>
                     <th>ElementName</th>
                     <th>DataCategory</th>
@@ -78,7 +78,7 @@
                         </td>
                     </tr>
                 }
-            </table>
+            </table>*@
         </dd>
     </dl>
 </div>

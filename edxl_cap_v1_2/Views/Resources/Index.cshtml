@@ -1,4 +1,4 @@
-﻿@model IEnumerable<edxl_cap_v1_2.Models.Resource>
+﻿@model IEnumerable<edxl_cap_v1_2.Models.ContentViewModels.Resource>
 @using edxl_cap_v1_2.Models
 
 @{
@@ -13,7 +13,10 @@
 </head>
 <body>
 
-    <h3>Resource</h3>
+    <h4>Resource</h4>
+    <div>
+        @ViewBag.Message
+    </div>
 
     <style>
         tr:nth-child(even) {
