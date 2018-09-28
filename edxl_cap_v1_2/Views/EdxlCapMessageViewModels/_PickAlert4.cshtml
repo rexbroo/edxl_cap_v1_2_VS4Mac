@@ -1,0 +1,37 @@
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.EdxlCapMessageViewModel
+
+@{
+    ViewData["Title"] = "PickAlert4";
+    Layout = "~/Views/Shared/_EdxlCapMessageLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/capv1_2_refimp.css" />
+    <title>Assemble EDXL-CAP Message</title>
+</head>
+
+<h4>Assemble EDXL-CAP Message</h4>
+
+<!-- DetailsAlert -->
+<div class="content-wrapper">
+    @Html.Partial("_DetailsAlert", Model.Alert)
+</div>
+<!-- End of DetailsAlert -->
+<!-- DetailsInfo -->
+<div class="content-wrapper">
+    @Html.Partial("_DetailsInfo", Model.Info)
+</div>
+<!-- End of DetailsInfo -->
+<!-- DetailsArea -->
+<div class="content-wrapper">
+    @Html.Partial("_DetailsArea", Model.Area)
+</div>
+<!-- End of DetailsArea -->
+<!-- DetailsResource -->
+<div class="content-wrapper">
+    @Html.Partial("_DetailsResource", Model.Resource)
+</div>
+<!-- End of DetailsResource -->

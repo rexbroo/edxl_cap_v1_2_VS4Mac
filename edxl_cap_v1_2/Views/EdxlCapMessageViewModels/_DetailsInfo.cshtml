@@ -1,0 +1,158 @@
+﻿@model edxl_cap_v1_2.Models.ContentViewModels.Info
+
+@{
+    ViewData["Title"] = "DetailsInfo";
+}
+
+
+<div align="left">
+    <h3>Details</h3>
+</div>
+
+<div>
+    <div align="left">
+        <h4>Info</h4>
+    </div>
+    <hr style="background-color:black; height: 2px" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Language)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Event)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Event)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponseType)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.ResponseType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Urgency)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Urgency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Certainty)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Certainty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Severity)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Severity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Audience)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Audience)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EventCode)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.EventCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Effective)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Effective)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Onset)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Onset)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Expires)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Expires)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SenderName)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.SenderName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Headline)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Headline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Instruction)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Instruction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Web)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Web)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Parameter)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Parameter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCategory_Id)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.DataCategory_Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert_Identifier)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Alert_Identifier)
+        </dd>
+        <dd>
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.InfoIndex">Edit</a>*@
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
