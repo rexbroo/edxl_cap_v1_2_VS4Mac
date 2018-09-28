@@ -1,8 +1,9 @@
 ﻿@model edxl_cap_v1_2.Models.ContentViewModels.Info
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "DetailsInfo";
 }
+
 
 <div align="left">
     <h3>Details</h3>
@@ -134,28 +135,25 @@
         <dd style="text-align: left">
             @Html.DisplayFor(model => model.DataCategory_Id)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert_Identifier)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Alert_Identifier)
+        </dd>
         <dd>
-            @*<table class="table">
-                    <tr>
-                        <th>ElementName</th>
-                        <th>DataCategory</th>
-                    </tr>
-                    @foreach (var item in Model.Elements)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ElementName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataCategory)
-                            </td>
-                        </tr>
-                    }
-                </table>*@
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.InfoIndex">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="Edit" asp-route-id="@Model.InfoIndex">Edit</a>*@
+    @*<a asp-action="Index">Back to List</a>*@
+    
+    <button onclick="goBack()">Go Back 3 pages</button>
+
+    <script>
+        function goBack(-3) {
+            window.history.back();
+        }
+    </script>
 </div>
