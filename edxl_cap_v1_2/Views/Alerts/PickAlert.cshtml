@@ -1,0 +1,187 @@
+﻿@model IEnumerable<edxl_cap_v1_2.Models.ContentViewModels.Alert>
+@using edxl_cap_v1_2.Models.ContentViewModels
+
+@{
+    ViewData["Title"] = "PickAlert";
+    
+}
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/capv1_2_refimp.css" />
+    <title>@ViewBag.Title</title>
+</head>
+
+    <h4>Alert</h4>
+    <div>
+        @ViewBag.Message
+    </div>
+
+    <style>
+        tr:nth-child(even) {
+            background-color: lightBlue;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+    </style>
+
+    <table class="smallText">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <span class="smallText">
+                            @Html.DisplayNameFor(model => model.Alert_Identifier) value
+                            <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Alert_Identifier)" size="60" />
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="alerts" asp-action="_DetailsAlert" method="post" asp-route-id="@item.AlertIndex">
+                        <input type="hidden"
+                               name="Identifier"
+                               value="@Html.DisplayFor(modelItem => item.Alert_Identifier)">
+                        <input type="submit"
+                               value="Check Alert">
+                    </form>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <span class="smallText">
+                            @Html.DisplayNameFor(model => model.Alert_Identifier) value
+                            <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Alert_Identifier)" size="60" />
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="infos" asp-action="_DetailsInfo" method="post" asp-route-id="@item.AlertIndex">
+                        <input type="hidden"
+                               name="Identifier"
+                               value="@Html.DisplayFor(modelItem => item.Alert_Identifier)">
+                        <input type="submit"
+                               value="Check Info">
+                    </form>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <span class="smallText">
+                            @Html.DisplayNameFor(model => model.Alert_Identifier) value
+                            <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Alert_Identifier)" size="60" />
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="areas" asp-action="_DetailsArea" method="post" asp-route-id="@item.AlertIndex">
+                        <input type="hidden"
+                               name="Identifier"
+                               value="@Html.DisplayFor(modelItem => item.Alert_Identifier)">
+                        <input type="submit"
+                               value="Check Area">
+                    </form>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <span class="smallText">
+                            @Html.DisplayNameFor(model => model.Alert_Identifier) value
+                            <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Alert_Identifier)" size="60" />
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="resources" asp-action="_DetailsResource" method="post" asp-route-id="@item.AlertIndex">
+                        <input type="hidden"
+                               name="Identifier"
+                               value="@Html.DisplayFor(modelItem => item.Alert_Identifier)">
+                        <input type="submit"
+                               value="Check Resource">
+                    </form>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <div id="elementInput">
+
+                        <span class="smallText">
+                            @Html.DisplayNameFor(model => model.Alert_Identifier) value
+                            <input type="text" name="elementValue" value="@Html.DisplayFor(modelItem => item.Alert_Identifier)" size="60" />
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+                <td>
+                    <form asp-area="" asp-controller="EdxlCapMessageViewModels" asp-action="_PickAlert4" method="post" asp-route-id="@item.AlertIndex">
+                        <input type="hidden"
+                               name="Identifier"
+                               value="@Html.DisplayFor(modelItem => item.Alert_Identifier)">
+                        <input type="submit"
+                               value="Add All">
+                    </form>
+                </td>
+                <td>
+                    <text>&nbsp;&nbsp;</text>
+                </td>
+            </tr>
+        }
+    </table>
+            

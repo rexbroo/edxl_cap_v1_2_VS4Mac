@@ -1,6 +1,5 @@
 ﻿@model edxl_cap_v1_2.Models.ContentViewModels.Alert
 
-
 @{
     ViewData["Title"] = "Details";
 }
@@ -100,27 +99,18 @@
             @Html.DisplayFor(model => model.DataCategory_Id)
         </dd>
         <dd>
-            @*<table class="table">
-                    <tr>
-                        <th>Added Element Name</th>
-                        <th>Added Element Value</th>
-                    </tr>
-                    @foreach (var item in Model.Elements)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(modelItem => item.ElementIndex)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ElementIndex)
-                        </td>
-                    </tr>
-                    }
-                </table>*@
         </dd>
     </dl>
 </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.AlertIndex">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.AlertIndex">Edit</a>*@
+    @*<a asp-action="_Assemble">Back to Assemble</a>*@
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack(-2) {
+            window.history.back();
+        }
+    </script>
+
+</div>
