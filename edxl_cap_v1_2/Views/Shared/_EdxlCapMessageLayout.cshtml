@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/capv1_2_refimp.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="content-wrapper">
+            @Html.Partial("_EdxlHeader")
+        </div>
+    </header>
+    <!-- End of Header -->
+    <!-- DetailsAlert -->
+    <div class="content-wrapper">
+        @Html.Partial("_DetailsAlert")
+    </div>
+    <!-- End of DetailsAlert -->
+    <!-- DetailsInfo -->
+    <div class="content-wrapper">
+        @Html.Partial("_DetailsInfo")
+    </div>
+    <!-- End of DetailsInfo -->
+    <!-- DetailsArea -->
+    <div class="content-wrapper">
+        @Html.Partial("_DetailsArea")
+    </div>
+    <!-- End of DetailsArea -->
+    <!-- DetailsResource -->
+    <div class="content-wrapper">
+        @Html.Partial("_DetailsResource")
+    </div>
+    <!-- End of DetailsResource -->
+
+    @{ RenderBody(); }
+
+    <!-- Footer -->
+    <footer>
+        <div class="content-wrapper">
+            @Html.Partial("_EdxlFooter")
+        </div>
+    </footer>
+
+</body>
+</html>
