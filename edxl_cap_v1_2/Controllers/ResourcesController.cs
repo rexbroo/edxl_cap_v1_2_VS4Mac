@@ -42,6 +42,15 @@ namespace edxl_cap_v1_2.Controllers
             return View(vm);
         }
 
+        public IActionResult PickResource(Resource obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Resource loaded successfully";
+            }
+            return View(_context.Resource.Where(x => x.ResourceIndex == SelectedAlertIndex));
+        }
+
         // GET: resources
         public async Task<IActionResult> Index()
         {
@@ -60,6 +69,27 @@ namespace edxl_cap_v1_2.Controllers
 
         // GET: Resources/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var resource = await _context.Resource
+                //.Include(e => e.Elements)
+                //    .ThenInclude(d => d.DataCategory)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.ResourceIndex == id);
+
+            if (resource == null)
+            {
+                return NotFound();
+            }
+
+            return View(resource);
+        }
+        // GET: Resources/Details/5
+        public async Task<IActionResult> _DetailsResource(int? id)
         {
             if (id == null)
             {

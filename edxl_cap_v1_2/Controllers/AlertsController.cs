@@ -41,17 +41,72 @@ namespace edxl_cap_v1_2.Controllers
             return View(vm);
         }
 
+        public ActionResult AlertPick()
+        {
+            var vm = new AlertViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AlertIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Alerts
+            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
+            {
+                AlertIndex = a.AlertIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
+        public ActionResult _AlertPick()
+        {
+            var vm = new AlertViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AlertIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Alerts
+            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
+            {
+                AlertIndex = a.AlertIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
+        public IActionResult PickAlert(Alert obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Alert loaded successfully";
+            }
+            return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
+        }
+
+        public IActionResult PickAlert4(Alert obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Alert loaded successfully";
+            }
+            return View("_Assemble.cshtml", _context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
+        }
+
         //// GET: Alerts
         public async Task<IActionResult> Index()
         {
             return View(await _context.Alert.ToListAsync());
         }
 
-        // GET: Alerts
-        //public ActionResult Index(int SelectedAlertIndex)
-        //{
-        //    return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
-        //}
 
         [HttpPost]
         public IActionResult Index(Alert obj, int? SelectedAlertIndex)
@@ -62,8 +117,6 @@ namespace edxl_cap_v1_2.Controllers
             }
             return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
         }
-
-
 
         // GET: Alerts/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -79,13 +132,26 @@ namespace edxl_cap_v1_2.Controllers
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.AlertIndex == id);
 
-            //if (id != null)
-            //{
-            //    ViewData["ElementID"] = id.Value;
-            //    Element element = viewModel.Element.Where(
-            //        i => i.ID == id.Value).Single();
-            //    viewModel.DataCategory = element.DataCategory.Select(s => s.Course);
-            //}
+            if (alert == null)
+            {
+                return NotFound();
+            }
+
+            return View(alert);
+        }
+
+        public async Task<IActionResult> _DetailsAlert(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var alert = await _context.Alert
+                //.Include(e => e.Elements)
+                //    .ThenInclude(d=> d.DataCategory)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.AlertIndex == id);
 
             if (alert == null)
             {

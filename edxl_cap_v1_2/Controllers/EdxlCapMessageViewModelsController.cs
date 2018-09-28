@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using edxl_cap_v1_2.Data;
+using edxl_cap_v1_2.Models;
+using edxl_cap_v1_2.Models.ContentViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using edxl_cap_v1_2.Data;
-using edxl_cap_v1_2.Models.ContentViewModels;
 
 namespace edxl_cap_v1_2.Controllers
 {
@@ -18,136 +19,121 @@ namespace edxl_cap_v1_2.Controllers
         {
             _context = context;
         }
-
-        // GET: EdxlCapMessageViewModels
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.EdxlCapMessageViewModel.ToListAsync());
-        }
-
-        // GET: EdxlCapMessageViewModels/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var edxlCapMessageViewModel = await _context.EdxlCapMessageViewModel
-                .SingleOrDefaultAsync(m => m.Alert_Identifier == id);
-            if (edxlCapMessageViewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(edxlCapMessageViewModel);
-        }
-
-        // GET: EdxlCapMessageViewModels/Create
-        public IActionResult Create()
+        public IActionResult Index()
         {
             return View();
         }
 
-        // POST: EdxlCapMessageViewModels/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Alert_Identifier")] EdxlCapMessageViewModel edxlCapMessageViewModel)
+        public IActionResult Assemble()
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(edxlCapMessageViewModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(edxlCapMessageViewModel);
+            return View();
         }
 
-        // GET: EdxlCapMessageViewModels/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public IActionResult _Assemble()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var edxlCapMessageViewModel = await _context.EdxlCapMessageViewModel.SingleOrDefaultAsync(m => m.Alert_Identifier == id);
-            if (edxlCapMessageViewModel == null)
-            {
-                return NotFound();
-            }
-            return View(edxlCapMessageViewModel);
+            return View(new EdxlCapMessageViewModel());
         }
 
-        // POST: EdxlCapMessageViewModels/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Alert_Identifier")] EdxlCapMessageViewModel edxlCapMessageViewModel)
+        public ActionResult _AlertPick()
         {
-            if (id != edxlCapMessageViewModel.Alert_Identifier)
-            {
-                return NotFound();
-            }
+            var vm = new AlertViewModel();
 
-            if (ModelState.IsValid)
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AlertIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Alerts
+            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
             {
-                try
-                {
-                    _context.Update(edxlCapMessageViewModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EdxlCapMessageViewModelExists(edxlCapMessageViewModel.Alert_Identifier))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(edxlCapMessageViewModel);
+                AlertIndex = a.AlertIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
         }
 
-        // GET: EdxlCapMessageViewModels/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public ActionResult _InfoPick()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var vm = new InfoViewModel();
 
-            var edxlCapMessageViewModel = await _context.EdxlCapMessageViewModel
-                .SingleOrDefaultAsync(m => m.Alert_Identifier == id);
-            if (edxlCapMessageViewModel == null)
-            {
-                return NotFound();
-            }
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.InfoIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
 
-            return View(edxlCapMessageViewModel);
+            //Load the Infos
+            vm.Infos = _context.EdxlCapMsg.Select(a => new InfoVm
+            {
+                InfoIndex = a.InfoIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
         }
 
-        // POST: EdxlCapMessageViewModels/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public ActionResult _AreaPick()
         {
-            var edxlCapMessageViewModel = await _context.EdxlCapMessageViewModel.SingleOrDefaultAsync(m => m.Alert_Identifier == id);
-            _context.EdxlCapMessageViewModel.Remove(edxlCapMessageViewModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var vm = new AreaViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.AreaIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Areas
+            vm.Areas = _context.EdxlCapMsg.Select(a => new AreaVm
+            {
+                AreaIndex = a.AreaIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
         }
 
-        private bool EdxlCapMessageViewModelExists(string id)
+        public ActionResult _ResourcePick()
         {
-            return _context.EdxlCapMessageViewModel.Any(e => e.Alert_Identifier == id);
+            var vm = new ResourceViewModel();
+
+            //Load the Identifiers property which will be used to build the SELECT element
+            vm.Alert_Identifiers = _context.EdxlCapMsg
+                                    .Select(x => new SelectListItem
+                                    {
+                                        Value = x.ResourceIndex.ToString(),
+                                        Text = x.Alert_Identifier
+                                    }).ToList();
+
+            //Load the Resources
+            vm.Resources = _context.EdxlCapMsg.Select(a => new ResourceVm
+            {
+                ResourceIndex = a.ResourceIndex,
+                Alert_Identifier = a.Alert_Identifier
+            }).ToList();
+            return View(vm);
+        }
+
+        public IActionResult PickAlert(Alert obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Alert loaded successfully";
+            }
+            return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
+        }
+
+        public IActionResult PickAlert4(Alert obj, int? SelectedAlertIndex)
+        {
+            if (SelectedAlertIndex.HasValue)
+            {
+                ViewBag.Message = "Alert loaded successfully";
+            }
+            return View("_Assemble.cshtml", _context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
         }
     }
 }
