@@ -14,8 +14,8 @@
         <h4>@Model.Resources.Count Resources</h4>
 
         <form asp-controller="Resources" asp-action="Index" method="post" style="max-width:550px;">
-            <select class="cap_select" id="cap_select" style="width:100%;max-width:95%"
-                    asp-for="SelectedAlertIndex" asp-items="@Model.Alert_Identifiers">
+            <select class="cap_select" id="cap_select" style="width:100%;max-width:95%;"
+            asp-for="SelectedAlertIndex" asp-items="@Model.Alert_Identifiers">
                 <option>Select one</option>
             </select>
             <br />
@@ -23,6 +23,3 @@
         </form>
     }
 
-
-<body>
-</body>

@@ -1,17 +1,10 @@
 ﻿@model edxl_cap_v1_2.Models.ContentViewModels.Resource
 
-@{
-    ViewData["Title"] = "Details";
-}
-
 <div align="left">
     <h3>Details</h3>
 </div>
-
-<div>
-    <div align="left">
-        <h4>Resource</h4>
-    </div>
+<div align="left">
+    <h4>Resource</h4>
     <hr style="background-color:black; height: 2px" />
     <dl class="dl-horizontal">
         <dt>
@@ -62,28 +55,25 @@
         <dd style="text-align: left">
             @Html.DisplayFor(model => model.DataCategory_Id)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert_Identifier)
+        </dt>
+        <dd style="text-align: left">
+            @Html.DisplayFor(model => model.Alert_Identifier)
+        </dd>
         <dd>
-            @*<table class="table">
-                    <tr>
-                        <th>ElementName</th>
-                        <th>DataCategory</th>
-                    </tr>
-                    @foreach (var item in Model.Elements)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ElementName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataCategory)
-                            </td>
-                        </tr>
-                    }
-                </table>*@
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ResourceIndex">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="Edit" asp-route-id="@Model.ResourceIndex">Edit</a>*@
+    @*<a asp-action="Index">Back to List</a>*@
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack(-2) {
+            window.history.back();
+        }
+    </script>
 </div>
