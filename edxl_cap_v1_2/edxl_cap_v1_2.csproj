@@ -1,53 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RuntimeFrameworkVersion>2.1.5</RuntimeFrameworkVersion>
     <UserSecretsId>aspnet-edxl_cap_v1_2-A2A54C28-3A39-4B96-8C1D-032B19CE2A9C</UserSecretsId>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-
-
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
-    <PackageReference Include="MySql.Data" Version="6.10.6" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.6" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="6.10.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
+    <PackageReference Include="MySql.Data" Version="8.0.12" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.12" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.12" />
     <PackageReference Include="MySqlClient" Version="5.4.2" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
   </ItemGroup>
-
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\css\capv1_2_refimp.css" />
-    <Content Remove="Views\Alerts\Create0.cshtml" />
-    <Content Remove="Views\Alerts\Create1.cshtml" />
-    <Content Remove="Views\Alerts\Index0.cshtml" />
-    <Content Remove="Views\Areas\Index0.cshtml" />
-    <Content Remove="Views\Areas\Index1.cshtml" />
-    <Content Remove="Views\Home\Index0.cshtml" />
-    <Content Remove="Views\Home\IndexCap.cshtml" />
-    <Content Remove="Views\Infos\Index0.cshtml" />
-    <Content Remove="Views\Infos\Index1.cshtml" />
-    <Content Remove="Views\Resources\Index0.cshtml" />
-    <Content Remove="Views\Resources\Index1.cshtml" />
-    <Content Remove="Views\Shared\_CapLeftColumnPartial0.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Models\ContentViewModels\AlertElementViewModel.cs" />
-    <Compile Remove="Models\ContentViewModels\AreaElementViewModel.cs" />
-    <Compile Remove="Models\ContentViewModels\InfoElementViewModel.cs" />
-    <Compile Remove="Models\ContentViewModels\ResourceElementViewModel.cs" />
   </ItemGroup>
 </Project>
