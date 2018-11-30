@@ -21,7 +21,7 @@ namespace edxl_cap_v1_2.Models.ContentViewModels
         [Key]
         public int InfoIndex { get; set; }
         [MaxLength(150)]
-        public int? Alert_Identifier { get; set; }
+        public string Alert_Identifier { get; set; }
     }
     
     public class Info
