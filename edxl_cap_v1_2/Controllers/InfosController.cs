@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,15 +41,6 @@ namespace edxl_cap_v1_2.Controllers
             return View(vm);
         }
 
-        public IActionResult PickInfo(Info obj, int? SelectedAlertIndex)
-        {
-            if (SelectedAlertIndex.HasValue)
-            {
-                ViewBag.Message = "Info loaded successfully";
-            }
-            return View(_context.Info.Where(x => x.InfoIndex == SelectedAlertIndex));
-        }
-
         // GET: Infos
         public async Task<IActionResult> Index()
         {
@@ -68,28 +59,6 @@ namespace edxl_cap_v1_2.Controllers
 
         // GET: Infos/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var info = await _context.Info
-                //.Include(e => e.Elements)
-                //    .ThenInclude(d => d.DataCategory)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.InfoIndex == id);
-
-            if (info == null)
-            {
-                return NotFound();
-            }
-
-            return View(info);
-        }
-
-        // GET: Infos/Details/5
-        public async Task<IActionResult> _DetailsInfo(int? id)
         {
             if (id == null)
             {
