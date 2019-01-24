@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,20 +41,11 @@ namespace edxl_cap_v1_2.Controllers
             return View(vm);
         }
 
-        public IActionResult PickArea(Area obj, int? SelectedAlertIndex)
-        {
-            if (SelectedAlertIndex.HasValue)
-            {
-                ViewBag.Message = "Area loaded successfully";
-            }
-            return View(_context.Area.Where(x => x.AreaIndex == SelectedAlertIndex));
-        }
-
         // GET: Areas
         public async Task<IActionResult> Index()
         {
             return View(await _context.Area.ToListAsync());
-        }        
+        }
 
         [HttpPost]
         public IActionResult Index(Area obj, int? SelectedAlertIndex)
@@ -68,28 +59,6 @@ namespace edxl_cap_v1_2.Controllers
 
         // GET: Areas/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var area = await _context.Area
-                //.Include(e => e.Elements)
-                //    .ThenInclude(d => d.DataCategory)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.AreaIndex == id);
-
-            if (area == null)
-            {
-                return NotFound();
-            }
-
-            return View(area);
-        }
-
-        // GET: Areas/Details/5
-        public async Task<IActionResult> _DetailsArea(int? id)
         {
             if (id == null)
             {
