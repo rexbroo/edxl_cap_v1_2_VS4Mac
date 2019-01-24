@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,72 +41,11 @@ namespace edxl_cap_v1_2.Controllers
             return View(vm);
         }
 
-        public ActionResult AlertPick()
-        {
-            var vm = new AlertViewModel();
-
-            //Load the Identifiers property which will be used to build the SELECT element
-            vm.Alert_Identifiers = _context.EdxlCapMsg
-                                    .Select(x => new SelectListItem
-                                    {
-                                        Value = x.AlertIndex.ToString(),
-                                        Text = x.Alert_Identifier
-                                    }).ToList();
-
-            //Load the Alerts
-            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
-            {
-                AlertIndex = a.AlertIndex,
-                Alert_Identifier = a.Alert_Identifier
-            }).ToList();
-            return View(vm);
-        }
-
-        public ActionResult _AlertPick()
-        {
-            var vm = new AlertViewModel();
-
-            //Load the Identifiers property which will be used to build the SELECT element
-            vm.Alert_Identifiers = _context.EdxlCapMsg
-                                    .Select(x => new SelectListItem
-                                    {
-                                        Value = x.AlertIndex.ToString(),
-                                        Text = x.Alert_Identifier
-                                    }).ToList();
-
-            //Load the Alerts
-            vm.Alerts = _context.EdxlCapMsg.Select(a => new AlertVm
-            {
-                AlertIndex = a.AlertIndex,
-                Alert_Identifier = a.Alert_Identifier
-            }).ToList();
-            return View(vm);
-        }
-
-        public IActionResult PickAlert(Alert obj, int? SelectedAlertIndex)
-        {
-            if (SelectedAlertIndex.HasValue)
-            {
-                ViewBag.Message = "Alert loaded successfully";
-            }
-            return View(_context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
-        }
-
-        public IActionResult PickAlert4(Alert obj, int? SelectedAlertIndex)
-        {
-            if (SelectedAlertIndex.HasValue)
-            {
-                ViewBag.Message = "Alert loaded successfully";
-            }
-            return View("_Assemble.cshtml", _context.Alert.Where(x => x.AlertIndex == SelectedAlertIndex));
-        }
-
         //// GET: Alerts
         public async Task<IActionResult> Index()
         {
             return View(await _context.Alert.ToListAsync());
         }
-
 
         [HttpPost]
         public IActionResult Index(Alert obj, int? SelectedAlertIndex)
@@ -132,26 +71,6 @@ namespace edxl_cap_v1_2.Controllers
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.AlertIndex == id);
 
-            if (alert == null)
-            {
-                return NotFound();
-            }
-
-            return View(alert);
-        }
-
-        public async Task<IActionResult> _DetailsAlert(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var alert = await _context.Alert
-                //.Include(e => e.Elements)
-                //    .ThenInclude(d=> d.DataCategory)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.AlertIndex == id);
 
             if (alert == null)
             {
