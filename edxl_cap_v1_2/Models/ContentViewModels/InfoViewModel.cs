@@ -29,7 +29,7 @@ namespace edxl_cap_v1_2.Models.ContentViewModels
         [Key]
         public int InfoIndex { get; set; }
         public string Language { get; set; }
-        public Category Category { get; set; }
+        public EdxlCapMessageCategory Category { get; set; }
         public string Event { get; set; }
         public ResponseType ResponseType { get; set; }
         public Urgency Urgency { get; set; }
@@ -55,7 +55,7 @@ namespace edxl_cap_v1_2.Models.ContentViewModels
 
     }
 
-    public enum Category
+    public enum EdxlCapMessageCategory
     {
         Geo,
         Met,
